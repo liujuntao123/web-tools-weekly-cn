@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import { BASE_URL as baseUrl,KEY as key } from './config';
+import { BASE_URL as baseUrl,KEY as key } from './config.js';
 
 const systemMessage={
     role:'system',
