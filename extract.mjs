@@ -29,6 +29,10 @@ export default async function extract(url) {
   });
 
   turndownService.remove((node) => {
+    return node.textContent === "Commercial Apps and Classifieds";
+  });
+
+  turndownService.remove((node) => {
     return node.style.backgroundColor === "#54463f";
   });
   turndownService.addRule("codeArea", {
