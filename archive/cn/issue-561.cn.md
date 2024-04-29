@@ -1,123 +1,108 @@
-### #561 （弹出模态框，React，Git / CLI，未分类）
+#561  (弹出窗口模态框、React、Git/CLI、待分类)
 
+上周我简要介绍了相对较新的Popover API的主要特点，该API允许你只需几行代码就可以原生地创建“弹出内容”。
 
+有一件事我只是粗略提到了一下，一部分原因是因为这个介绍概括，另一部分原因是因为这对我来说是新鲜事物：Popover API不仅仅用于创建“模态窗口”，虽然这是主要的用途之一。Popover还可以创建各种覆盖内容，例如：
 
-上周我简要介绍了相对较新的 Popover API 的主要特点，它允许你使用几行代码本地创建“浮动”内容。
+* 互动菜单
+* 提示工具，显示如何使用界面元素（例如表单提示）
+* 提示通知
+* 教学内容（例如应用程序的“导览”）
 
-在此介绍部分的简短和因为这是对我来说新的事物，我忽略了一件事情，那就是 Popover API 不仅仅用于创建“模态窗口”，尽管这是主要的用例之一。Popover 允许你创建各种覆盖内容，例如：
+所有这些以及类似用例都是可能的，也是鼓励的。所以这个API不仅仅用于一般会让用户烦恼的内容！ :)
 
-* 交互式菜单
-* 工具提示显示如何使用 UI 元素（例如，表单提示）
-*   弹出通知
-*   指导内容（例如应用程序的“导览”）
+还要注意的是，使用Popover API创建的弹出内容始终是“非模态”的。所以严格地说，将这些弹出窗口称为“模态窗口”并不准确。非模态内容意味着在弹出窗口出现时，页面的其余部分仍然可以进行交互。
 
-所有这些类似的用例都是可行的，并且鼓励使用。因此，API并不仅限于通常让用户感到烦恼的内容！ :)
+如果你想使用Popover API创建“模态”的内容，你需要使用一些额外的功能。例如，下面的CSS可以使弹出窗口看起来更像一个真正的模态窗口：
 
-还应注意到，使用Popover API创建的弹出内容始终是“非模态”的。因此，在技术上将这些弹出窗口称为“模态窗口”是不准确的。非模态内容意味着在弹出窗口出现时，页面的其余部分仍然可以进行交互。
-
-如果您想使用弹出窗口API创建“模态”内容，您需要使用一些额外的功能。例如，以下CSS将使弹出窗口更像一个正确的模态窗口：
-
-
-```
+```css
 ::_backdrop_ {  
-  background-color: lightblue;  
-  opacity: 0.7;  
+  background-color: lightblue;  
+  opacity: 0.7;  
 }
 ```
 
-CSS中的**::backdrop** 伪元素定义了一个与视口大小相同的框，位于CSS中元素的“顶层”之后。这类似于我们以前用于在这样的窗口后面获得绝对定位元素的方式。这使得创建这样的元素变得容易。当存在弹出窗口时，**::backdrop**元素会在包含在CSS中时自动添加。
+CSS中的**::backdrop**伪元素定义了一个与CSS中一个元素的“顶层”背后的视口大小的框。类似于我们以前如何在这样的窗口后面使用hack技巧创建绝对定位的元素。这使得创建这样一个元素变得容易。当弹出窗口存在时，**::backdrop**元素会在被包含在你的CSS中时自动添加进来。
+**::背景** 元素不仅在弹出窗口中出现，还在使用全屏 API 的全屏模式元素以及用作模态框的 **\<dialog>** 元素中出现。
 
-**::backdrop**元素不仅在弹出框中存在，而且在使用全屏API的全屏模式下以及用作模态框的**<dialog>**元素中也存在。
+如果您想要使用 Popover API 创建更传统的“模态”窗口的演示，请尝试 [此 CodePen 演示](https://codepen.io/impressivewebs/pen/ZEZqXyy?editors=0100)。如果您希望模态框能够使用 ESC 键或单击模态框外部关闭，请将 popover 属性从 "manual" 更改为 "auto"。
 
-为了使用弹出式窗口 API 创建更传统的“模态”窗口的演示，您可以尝试[此 CodePen 演示](https://codepen.io/impressivewebs/pen/ZEZqXyy?editors=0100)。如果您希望模态窗口能够通过按下 ESC 键或点击模态窗口外部来关闭，只需将 popover 属性更改为“auto”，而不是“manual”。
+现在开始介绍本周的工具！
 
+React 工具
+---------
 
-现在轮到本周的工具了！
+[**Firebolt**](https://firebolt.dev/) — 一个 React 框架，可帮助您快速构建高性能、高效的全栈 Web 应用程序，具有 10 KB 运行时、统一的路由、CSS-in-JS 等功能。
 
+[**use-travel**](https://github.com/unadlib/use-travel) — 用于状态时间旅行的 React Hook，具有撤销、重做、重置和存档功能。
 
-# React 工具
------------
+[**@gsap/react**](https://github.com/greensock/react) — 用于流行的 GSAP 动画库的 React Hook，用于解决在 React 项目中使用 GSAP 时的一些 React 特定的摩擦点。
 
-[**Firebolt**](https://firebolt.dev/)  - 一个React框架，可以帮助您在Web上快速构建高性能、高效的全栈应用程序，具有10KB运行时、统一的路由、CSS-in-JS等功能。
+[**Anytime Mailbox**](https://www.clkmg.com/wellput-io/83150luhtrwi6/83150-1101/Web%20Tools%20Weekly///) — 创业者们，您是否需要一个独立于家庭的商务地址？Anytime Mailbox 提供无缝解决方案，为您提供一个私密、专业的地址，并提供邮件转发和扫描等额外便利功能。广告赞助。
 
-[**use-travel**](https://github.com/unadlib/use-travel)  - 一个用于状态时间旅行的React Hook，具有撤消、重做、重置和存档功能。
+[**Next.js 图像转换**](https://github.com/coollabsio/next-image-transformation) — 用于 Vercel 的 Next.js 图像优化服务的替代方案，用于在 <Image> 组件中调整 Next.js 中的图像大小。
 
-[**@gsap/react**](https://github.com/greensock/react)  - 一个用于流行的GSAP动画库的React钩子，解决在React项目中使用GSAP时的一些React特定的摩擦点。
+[**next-export-i18n**](https://github.com/martinkr/next-export-i18n) — 用于 Next.js 应用程序的项目国际化的简单、响应式客户端解决方案。
 
-[**Anytime Mailbox**](https://www.clkmg.com/wellput-io/83150luhtrwi6/83150-1101/Web%20Tools%20Weekly///)  - 创业者，您是否需要一个与家庭分开的商业地址？ Anytime Mailbox 提供了一个无缝解决方案，为您提供私人、专业的地址，并提供邮件转发和扫描等额外的便利服务。     赞助
-
-[**Next.js Image Transformation**](https://github.com/coollabsio/next-image-transformation)  - 使用方式与 Vercel 的 Next.js 图片优化服务相同，可替代 <Image> 组件中用于调整图片大小的功能。
-
-[**next-export-i18n**](https://github.com/martinkr/next-export-i18n)  - 在Next.js应用中，一个简单的、反应式的客户端解决方案，用于项目国际化。
-
-[**Chai Builder**](https://chaibuilder.com/)  - 一个简单的React组件，可以集成到任何基于React的框架中作为低代码的React + Tailwind落地页构建器。
+[**Chai Builder**](https://chaibuilder.com/) — 一个简单的 React 组件，可以集成到任何基于 React 的框架中作为低代码 React + Tailwind 登录页面构建器。
 
 [![Chai Builder](https://mcusercontent.com/ea228d7061e8bbfa8639666ad/images/2e7817e9-693e-07e0-6d24-9f74bbfb6878.png)](https://chaibuilder.com/)
 
+[**UVCanvas**](https://uvcanvas.com/) — 一个开源的 React 组件库，提供一组丰富的动态画布，可用作 Web 背景、壁纸和设计素材。
+[**Underhive**](https://github.com/Underhive/visual-react-editor) — 一个用于在React项目中添加可视化编辑功能的React工具，类似于在Figma或其他设计工具中进行工作。
 
-[**UVCanvas**](https://uvcanvas.com/)  - 一个开源的React组件库，提供了丰富的动态画布，可用作网页背景、壁纸和设计材料。
-
-[**Underhive**](https://github.com/Underhive/visual-react-editor)  - 一个React工具，用于向React项目添加可视化编辑功能，类似于在Figma或其他设计工具中工作。
-
-[**Marquee**](https://github.com/devnomic/marquee)  - 一个用于给网页部分添加可定制的走马灯效果的 React 组件，类似于旋转木马，但是可以连续地滚动动画，可以包含图片或文本。
+[**Marquee**](https://github.com/devnomic/marquee) — 一个用于向网页部分添加可自定义的跑马灯效果的React组件，类似于旋转木马，但是是连续滚动的动画，可以包含图片或文字。
 
 Git、GitHub和CLI工具
---------------------------
+-----------------------------
+
+[**Gitu**](https://github.com/altsem/gitu) — 一种基于Rust的终端用户界面，用于Git，灵感来自于Magit，这是一个流行的基于文本的Git用户界面。
+
+[**GitHub个人资料README生成器**](https://githubprofile.com/) — 一个简单的用户界面，用于生成GitHub的README，您可以在其中分享个人资料、技能、社交链接等，以Markdown格式。
+
+[![GitHub个人资料README生成器](https://mcusercontent.com/ea228d7061e8bbfa8639666ad/images/08061d6e-e0eb-5e90-1881-b7c69b75ec9a.png)](https://githubprofile.com/)
 
 
-[**Gitu**](https://github.com/altsem/gitu)  - Git 的基于 Rust 的终端用户界面，灵感来自于 Magit，一个流行的文本界面的 Git 用户界面。
+[**csvlens**](https://github.com/YS-L/csvlens) — 一个命令行CSV文件查看器，用Rust编写，可以使用CSV文件名或直接管道CSV数据。
 
-[**GitHub Profile Readme Generator**](https://githubprofile.com/)  - 一个简单的用户界面，可以生成一个GitHub的README文件，在其中您可以分享您的个人资料、技能、社交链接等等，以Markdown的格式。
+[**错过了Ring和Nest？不要错过RYSE！**](https://www.clkmg.com/wellput-io/87563lufz1ktl/87563-1154/Lazarpress/Consolidated%20Body%20Copy%20v1//) — RYSE刚在100多家百思买商店推出，您仍然可以以1.50美元/股投资。他们已经申请了唯一的大众市场遮阳自动化设备专利，他们与百思买的独家交易类似于过去的Ring和Nest等十亿美元收购。赞助。
 
-[![GitHub个人资料自述文件生成器](https://mcusercontent.com/ea228d7061e8bbfa8639666ad/images/08061d6e-e0eb-5e90-1881-b7c69b75ec9a.png)](https://githubprofile.com/)
+[**Gitroom**](https://gitroom.com/) — 一套工具，帮助您扩大开源仓库，获得更多的可见性、星星、贡献等，作为类似于Buffer等服务的替代品。
 
+[**自动维基**](https://wiki.mutable.ai/) — 查看任何仓库的高质量自动生成文档。
 
-[**csvlens**](https://github.com/YS-L/csvlens)  - 一个用Rust编写的命令行CSV文件查看器，让您可以使用CSV文件名或直接管道CSV数据。
+[**Repo Lockdown**](https://github.com/marketplace/actions/repo-lockdown) — 一个GitHub操作，立即关闭和锁定存储库的问题和拉取请求，在您不想归档存储库但想限制外部请求时很有用。
 
-[**Missed out on Ring and Nest? Don’t Let RYSE Slip Away!**](https://www.clkmg.com/wellput-io/87563lufz1ktl/87563-1154/Lazarpress/Consolidated%20Body%20Copy%20v1//)  - RYSE刚刚在100多家百思买商店推出，您仍然可以以1.50美元/股的价格进行投资。他们已经获得专利，是唯一的大众市场自动调光装置，并且他们与百思买达成的独家协议类似于过去引发了类似Ring和Nest的亿美元收购交易。广告
+[**deploy-pages**](https://github.com/actions/deploy-pages) — 一个GitHub操作，用于将“构件”发布到GitHub Pages以进行部署。有关构件的讨论，请参阅描述中的参考链接。
 
-[**Gitroom**](https://gitroom.com/)  - 一套工具，用于帮助您增加开源仓库的成长，获得更多的可见度、星标、贡献等，作为 Buffer 等服务的替代品。
+[**Difftastic**](https://difftastic.wilfred.me.uk/) — 一种基于语法而不是逐行比较文件的CLI差异工具，生成易于阅读的准确差异。
 
-[**Auto Wiki**](https://wiki.mutable.ai/)  - 查看任何存储库的高质量、自动生成的文档。
+[**hypershell**](https://github.com/holepunchto/hypershell) — 一个npm包，可以在任何地方生成完全点对点、经过身份验证和端到端加密的shell。
+## 不分类的项目
+---------------------
 
-[**Repo Lockdown**](https://github.com/marketplace/actions/repo-lockdown)  - 一种立即关闭和锁定存储库上的问题和拉取请求的 GitHub 动作，当您不想归档存储库但希望限制外部请求时非常有用。
+[**Classnames**](https://classnames.paulrobertlloyd.com/) — 一个资源，包含按主题分组的单词列表，以帮助您在编程中为HTML类、CSS属性或JavaScript函数等命名提供灵感。
 
-[**deploy-pages**](https://github.com/actions/deploy-pages)  - 一个用于在部署时将“artifacts”发布到GitHub Pages的GitHub Action。请参阅描述中的参考链接以了解“artifacts”的讨论内容。
+[**HeyForm**](https://github.com/heyform/heyform) — 一个开源的表单构建工具，允许任何人创建引人注目的对话式表单，用于调查、问卷调查、测验和投票，无需编程技能。
 
-[**Difftastic**](https://difftastic.wilfred.me.uk/)  - 一个命令行界面的 diff 工具，根据文件的语法进行比较，而不是逐行比较，以生成更容易阅读的准确差异。
+[**Creo**](https://www.trycreo.com/) — 一个简单的基于React的初始框架，可加快内部工具的开发。
 
-[**hypershell**](https://github.com/holepunchto/hypershell)  - 一个npm软件包，用于在任何地方生成全面点对点、经过身份验证和端到端加密的shell。
+[**Counterscale**](https://counterscale.dev/) — 免费且开源的、注重隐私的网页分析工具，可部署为单个Cloudflare Worker。
 
+[![Counterscale](https://mcusercontent.com/ea228d7061e8bbfa8639666ad/images/c3c3c13d-6c00-bb8e-3c6e-891f21dddab7.png)](https://counterscale.dev/)
 
+[**Stract**](https://stract.com/) — 一个面向黑客和修补师的开源搜索引擎，用户可以查看搜索结果的具体内容，并自定义几乎一切。
 
+[**错过了Ring和Nest？别让RYSE错过你！**](https://www.clkmg.com/wellput-io/87563lufz1ktl/87563-1154/Lazarpress/Consolidated%20Body%20Copy%20v1//) — RYSE刚在100多家百思买商店推出，你仍然可以以1.50美元/股的价格投资。他们拥有唯一的大众市场遮阳自动化设备专利，他们与百思买的独家交易类似于过去带来数十亿美元的Ring和Nest收购交易。赞助链接
 
+[**RunJS**](https://runjs.app/play) — 一个简单的JavaScript沙盒，当您键入时，右侧会立即显示结果，可能对演示和直播展示很有用。
 
-未分类的项目
---------------------
-                    
+[**Nitro**](https://github.com/unjs/nitro) — 一个下一代的服务器工具包，用于创建包含所有需要的Web服务器，并在您喜欢的任何地方部署它们。
 
-[**Classnames**](https://classnames.paulrobertlloyd.com/)  - 一个包含按主题分组的单词列表的资源，可以帮助您在编程中为命名事物（例如HTML类、CSS属性或JavaScript函数）寻找灵感。
+[**Automatisch**](https://automatisch.io/) — 一个开源的Zapier替代工具，可帮助您在不编写代码的情况下自动化业务流程。
 
-[**HeyForm**](https://github.com/heyform/heyform)  - 一个开源的表单生成器，允许任何人创建富有互动性的对话式表单，用于调查、问卷、测验和投票，无需编程技能。
-
-[**Creo**](https://www.trycreo.com/)  - 一个基于React的简单入门框架，可以快速开发内部工具。
-
-[**Counterscale**](https://counterscale.dev/)  - 自由且开源的隐私焦点网络分析工具，可部署为单个Cloudflare Worker。
-
-[![计数器规模](https://mcusercontent.com/ea228d7061e8bbfa8639666ad/images/c3c3c13d-6c00-bb8e-3c6e-891f21dddab7.png)](https://counterscale.dev/)
-
-
-[**Stract**](https://stract.com/)  - 一个开源的搜索引擎，专为黑客和工匠们设计，用户能够直接查看搜索过程，并自定义搜索结果的几乎所有部分。
-
-[**Missed out on Ring and Nest? Don’t Let RYSE Slip Away!**](https://www.clkmg.com/wellput-io/87563lufz1ktl/87563-1154/Lazarpress/Consolidated%20Body%20Copy%20v1//)  - RYSE刚刚在100多家百思买商店推出，并且您仍然可以以每股1.50美元的价格进行投资。他们拥有专利授权的唯一大众市场遮阳自动化设备，他们与百思买的独家交易类似于过去像Ring和Nest等公司的数十亿美元收购交易。 SPONSORED
-
-[**RunJS**](https://runjs.app/play)  - 一个简单的JavaScript游乐场，当您输入时立即在右侧显示结果，可能对演示和实时演讲有用。
-
-[**Nitro**](https://github.com/unjs/nitro)  - 一个下一代的服务器工具箱，可以创建具备一切所需的Web服务器，并将它们部署在您喜欢的任何地方。
-
-[**Automatisch**](https://automatisch.io/)  - 一个开源的Zapier替代品，帮助您在不需要编码的情况下自动化业务流程。
-
-[**QuickWP**](https://quickwp.ai/)  - 一个在线工具，允许您根据您的输入，创建一个基于人工智能生成的WordPress主题，包括样式、内容和图像。
+[**QuickWP**](https://quickwp.ai/) — 一个在线工具，可以根据您的输入创建基于人工智能生成的WordPress主题，包括样式、内容和图片。
 
 
 文章翻译自：[Web Tools Weekly Issue #561 (Popover Modals, React, Git/CLI, Uncats)](https://webtoolsweekly.com/archives/issue-561) 
+

@@ -125,7 +125,7 @@ React工具
 
 [**Reacton**](https://github.com/widgetti/reacton)  - 一个纯Python的React移植库，用于Jupyter Notebooks的交互式小部件集ipwidgets。
 
-[**Superglue**](https://github.com/thoughtbot/superglue)  - 如果Python不是你擅長的領域，這個專案（尚在早期開發階段）讓你使用經典的Rails來構建豐富的React Redux應用程序，無需API和客戶端路由。
+[**Superglue**](https://github.com/thoughtbot/superglue)  - 如果Python不是你擅长的领域，这个专案（尚在早期开发阶段）让你使用经典的Rails来构建丰富的React Redux应用程序，无需API和客户端路由。
 
 [**re-frame**](https://github.com/day8/re-frame)  - 我们已经讲解了Python和Rails，现在来介绍一下ClojureScript框架，它可以用来构建用户界面并利用React技术。
 
