@@ -6,8 +6,8 @@ const systemMessage = {
   content:
     "You are a professional, authentic translation engine. You only return the translated text, without any explanations.",
 };
-const model = "gpt-3.5-turbo";
-const mergeLine = 100;
+const model = "gpt-4o-mini";
+const mergeLine = 200;
 
 function someFixes(content) {
   const str = content
